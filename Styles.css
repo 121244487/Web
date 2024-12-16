@@ -1,0 +1,191 @@
+body, a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.Navbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  background-color: #2f2200;
+  position: fixed;
+  height: 60px;
+  width: 100%;
+  top: 0; 
+  z-index: 999;
+}
+.Navbar > .left {
+  height: 60%;
+  width: auto;
+  display: flex;
+  border: 0px dashed #f5f5f5;
+  margin: 10px
+}
+.Navbar > .right {
+  height: 60%;
+  width: auto;
+  display: flex;
+  border: 0px dashed #f5f5f5;
+  margin: 10px;
+}
+.Navbar > .left > .icon img{
+  height: 100%;
+}
+.Navbar > .right > .icon img{
+  height: 100%;
+  margin-left: 10px;
+}
+.Navbar > .right > .Search-Box {
+  position: relative;
+  height: 100%;
+  width: 200px;
+}
+.Navbar > .right > .Search-Box input{
+  width: 100%;
+  height: 100%;
+  padding: 0 50px;
+  font-size: 16px;
+  border-radius: 50px;
+  outline: none;
+  box-sizing: border-box; 
+}
+.Navbar > .right > .Search-Box img {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer; 
+}
+.Navbar > .right > .Search-Box >.left {
+  left: 15px;
+}
+.Navbar > .right > .Search-Box >.right {
+  right: 15px;
+}
+.transparent-block {
+  position: absolute; /* 使用絕對定位來覆蓋 */
+  top: 0;
+  left: 0;
+  width: 5%;
+  height: 60px; /* 覆蓋整個視窗或父元素的區域 */
+  background-color: rgba(255, 255, 255, 0.5); /* 白色，透明度 50% */
+}
+
+.MainImg {
+  position: relative;
+  width: 100%;
+  height: 500px; 
+  background-image: url("Image/IMG_Main.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.MainImg::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: inherit;
+  background-size:cover;
+  background-position: center;
+  z-index: -1; 
+  
+}
+.MainImg img{
+  width: 50px;
+  height: 50px;
+  padding-left: 10%;
+  bottom: 10px;
+}
+.MainImg > p{
+  color: #f5f5f5;
+  font-size: 60px;
+  letter-spacing: 5px;
+  padding-left: 10%;
+  padding-top: 140px;
+}
+
+.Navbar2 {
+  background-color: #2f2200;
+  height: 60px;
+  width: 100%;
+}
+
+.AutoCarousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;   
+  margin-top: 10px;
+  width: 100%;
+  height: auto;            
+}
+
+.AutoCarousel img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+
+
+.Product-List {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+  margin-top: 220px; /* 頁面內容距離固定導覽列 */
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+  box-sizing: border-box;
+}
+
+/* 單個產品卡片樣式 */
+.product {
+
+  cursor: pointer;
+  text-align: left;
+  transition: filter 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease; /* 加入陰影過渡效果 */
+}
+
+.product:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3 );
+}
+
+.Product-Image {
+  width: 100%;
+}
+
+.Product-Image:hover {
+  
+}
+
+
+.product h3{
+  margin: 10px;
+}
+
+
+.Product-Under {
+  display: flex;
+  align-items: center;
+  height: 16px;
+  margin: 10px;
+  justify-content: space-between; 
+}
+.Product-Under img {
+  height: 100%; 
+}
+.Product-Under p {
+  color: #ff0000;
+}
+.Product-Under-Icon {
+  height: 100%; 
+}
+img.favorite {
+  filter: brightness(0) saturate(100%) invert(83%) sepia(63%) saturate(579%) hue-rotate(-45deg) brightness(95%) contrast(90%);
+}
+
+
+

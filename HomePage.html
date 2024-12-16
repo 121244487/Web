@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>圖示導覽列</title>
+  <link rel="stylesheet" href="Styles.css">
+  <script src="JavaScript/ButtonScript.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>  <!-- 引入 XLSX 函式庫 -->
+</head>
+<body>
+  <header>
+
+    <div class="Navbar">
+      
+      <div class = "left">
+        
+        <div href="#" class="icon">
+        <img src="Image/List_Icon.png" alt="總攬" class="Onclick_List">
+        </div>
+        <div class="transparent-block">        </div>
+    
+      </div>
+      <div class = "right">
+
+        <div class="Search-Box">
+          <input type="text" id="searchInput" placeholder="" oninput="SearchList()">
+          <img src="Image/Magnifier_Icon.png" alt="搜尋圖示" class="left"> 
+          <img src="Image/Mic_Icon.png" alt="麥克風圖示" class="right">
+        </div>
+
+        <div href="#" class="icon">
+          <img src="Image/Favorites_Icon.png" alt="收藏清單" onclick="FavoriteList()">
+        </div>
+
+        <div href="#" class="icon">
+          <img src="Image/User_Icon.png" alt="會員資料">
+        </div>
+
+        <div href="#" class="icon">
+          <img src="Image/Cart_Icon.png" alt="購物車清單">
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class = "MainImg">
+      <p>COFFEE<br>BEANS</p>
+      <img src="Image/Arrow_Icon.png">
+    </div>
+    <div class="Navbar2">
+
+    </div>
+
+    <div class = "AutoCarousel">
+      <img src="Image/IMG_6440.jpg">
+      <img src="Image/IMG_6441.jpg">
+      <img src="Image/IMG_6442.jpg">
+    </div>
+  </header>
+
+  <!-- 產品顯示容器 -->
+  <div class="Product-List" id="product-list"></div>
+
+  <!-- 引入 JavaScript 檔案 -->
+  <script src="JavaScript/ProductScript.js"></script>
+</body>
+</html>
