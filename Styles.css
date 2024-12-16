@@ -11,7 +11,7 @@ body, html {
   background-color: #2f2200;
   position: fixed;
   height: 60px;
-  width: auto;
+  width: 100%;
   top: 0; 
   z-index: 999;
 }
@@ -64,14 +64,7 @@ body, html {
 .Navbar > .right > .Search-Box >.right {
   right: 15px;
 }
-.transparent-block {
-  position: absolute; /* 使用絕對定位來覆蓋 */
-  top: 0;
-  left: 0;
-  width: 5%;
-  height: 60px; /* 覆蓋整個視窗或父元素的區域 */
-  background-color: rgba(255, 255, 255, 0.5); /* 白色，透明度 50% */
-}
+
 
 .MainImg {
   position: relative;
