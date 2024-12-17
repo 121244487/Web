@@ -134,8 +134,8 @@ body, html {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  position: absolute;
-  transition: opacity 1s ease-in-out;
+  position: absolute; /* 媽逼 */
+  transition: 1s ease-in-out;
 }
 
 
