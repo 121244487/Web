@@ -14,10 +14,10 @@ const SquareImagesList = [
 
 let CurrentPosIndex;
 let CurrentListIndex;
-let intervalId = null;  // 儲存 setInterval 返回的 ID
+let intervalId = null;
 
 function changeImage() {
-  const Pos = document.querySelectorAll('.AutoCarousel .Img img');
+  const Pos = document.querySelectorAll('.AutoCarousel02 .Img img');
   
   CurrentListIndex = (CurrentListIndex + 1) % SquareImagesList.length;
   
@@ -33,16 +33,18 @@ function changeImage() {
 
 function UpdateImages() {
   
-  const container = document.querySelector('.AutoCarousel');
+  const container = document.querySelector('.AutoCarousel02');
   const screenWidth = window.innerWidth;
 
-    let numImgDivs;
+  let numImgDivs;
   if (screenWidth >= 1280) {
-    numImgDivs = 7;  // 大螢幕顯示 7
+    numImgDivs = 7;  // 大螢幕顯示 7 列
   } else if (screenWidth >= 1024) {
-    numImgDivs = 5;  // 中等螢幕顯示 5
+    numImgDivs = 5;  // 中等螢幕顯示 5 列
+  } else if (screenWidth >= 600) {
+    numImgDivs = 3;  // 小螢幕顯示 3 列
   } else {
-    numImgDivs = 3;  // 小螢幕顯示 3
+    numImgDivs = 2;  // 可以根據需求設定其他顯示數量
   }
 
   CurrentListIndex = numImgDivs - 1;
