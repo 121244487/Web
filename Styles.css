@@ -3,6 +3,34 @@ body, html {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
+  font-size: 1rem;
+}
+/* 當螢幕寬度大於等於 1200px 時，字體大小設置為 1.5倍 */
+@media (min-width: 1200px) {
+  body {
+    font-size: 1rem;
+  }
+}
+
+/* 當螢幕寬度大於等於 900px 且小於 1200px 時，字體大小設置為 1.3倍 */
+@media (min-width: 900px) and (max-width: 1199px) {
+  body {
+    font-size: 1.1rem;
+  }
+}
+
+/* 當螢幕寬度大於等於 600px 且小於 900px 時，字體大小設置為 1.1倍 */
+@media (min-width: 600px) and (max-width: 899px) {
+  body {
+    font-size: 1.3rem;
+  }
+}
+
+/* 當螢幕寬度小於 600px 時，字體大小設置為 1倍 */
+@media (max-width: 599px) {
+  body {
+    font-size: 1.5rem;
+  }
 }
 
 .Navbar {
@@ -133,15 +161,15 @@ body, html {
 
 
 .Product-List {
+  border: 2px dashed #ff0303;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);  /* 預設顯示 4 列 */
-  gap: 1%;
-  padding: 1%;
-  margin-top: 10px;
+  grid-template-columns: repeat(2, 1fr);  /* 預設顯示 4 列 */
+  gap: 10px;
   margin-left: auto;
   margin-right: auto;
   max-width: 1200px;
   box-sizing: border-box;
+  align-items: center;    /* 垂直居中 */
 }
 .product {
   display: flex;
@@ -153,26 +181,23 @@ body, html {
   height: auto;
   width: auto;
   gap: 10px;
+
 }
-/* 大於等於 1200px，顯示 4 列 */
 @media (min-width: 1200px) {
   .Product-List {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-/* 900px 到 1199px 之間，顯示 3 列 */
 @media (min-width: 900px) and (max-width: 1199px) {
   .Product-List {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-/* 600px 到 899px 之間，顯示 2 列 */
 @media (min-width: 600px) and (max-width: 899px) {
   .Product-List {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-/* 小於 600px，顯示 1 列 */
 @media (max-width: 599px) {
   .Product-List {
     grid-template-columns: repeat(1, 1fr);
@@ -187,10 +212,11 @@ body, html {
 }
 .product > h3 {
   width: 80%;
+  height: auto;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  margin: 5px; 
+  margin: 0; 
 }
 
 .product > .Under {
@@ -219,6 +245,22 @@ img.favorite {
   filter: brightness(0) saturate(100%) invert(83%) sepia(63%) saturate(579%) hue-rotate(-45deg) brightness(95%) contrast(90%);
 }
 
+.Varietis{
+  display: flex;
+  align-items: center;
+  justify-content:left;
+  width: 100%;
+  height: auto;
+  font-size: 60px;
+  border: 2px dashed #ff0303;
+  color:rgb(187, 135, 2);
+}
+.Varietis > .Line{
+  width: 5%;
+  height: 10px;
+  background-color: #201802;
+  border: 2px dashed #ff0303;
+}
 .Notification {
   position: fixed;
   top: 50%;

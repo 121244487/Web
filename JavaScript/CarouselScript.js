@@ -37,16 +37,13 @@ function UpdateImages() {
   const screenWidth = window.innerWidth;
 
   let numImgDivs;
-  if (screenWidth >= 1280) {
-    numImgDivs = 7;  // 大螢幕顯示 7 列
-  } else if (screenWidth >= 1024) {
-    numImgDivs = 5;  // 中等螢幕顯示 5 列
-  } else if (screenWidth >= 600) {
-    numImgDivs = 3;  // 小螢幕顯示 3 列
+  if (screenWidth >= 1800) {
+    numImgDivs = 9;  // 大螢幕顯示 7 列
+  } else if (screenWidth >= 1000) {
+    numImgDivs = 7;  // 中等螢幕顯示 5 列
   } else {
-    numImgDivs = 2;  // 可以根據需求設定其他顯示數量
+    numImgDivs = 5;  // 小螢幕顯示 3 列
   }
-
   CurrentListIndex = numImgDivs - 1;
   CurrentPosIndex = 1;
 
