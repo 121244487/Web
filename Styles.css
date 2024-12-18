@@ -161,7 +161,7 @@ body, html {
 
 
 .Product-List {
-  border: 2px dashed #ff0303;
+  border: 0px dashed #ff0303;
   display: grid;
   grid-template-columns: repeat(2, 1fr);  /* 預設顯示 4 列 */
   gap: 10px;
@@ -252,14 +252,14 @@ img.favorite {
   width: 100%;
   height: auto;
   font-size: 60px;
-  border: 2px dashed #ff0303;
+  border: 0px dashed #ff0303;
   color:rgb(187, 135, 2);
 }
 .Varietis > .Line{
   width: 5%;
   height: 10px;
   background-color: #201802;
-  border: 2px dashed #ff0303;
+  border: 0px dashed #ff0303;
 }
 .Notification {
   position: fixed;
