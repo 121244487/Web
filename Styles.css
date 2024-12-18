@@ -9,7 +9,7 @@ body, html {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  background-color: #2f2200;
+  background-color: #201802;
   position: fixed;
   height: 60px;
   width: 100%;
@@ -17,31 +17,21 @@ body, html {
   z-index: 999;
 
 }
-.Navbar > .left {
+.Navbar > img{
   height: 60%;
   width: auto;
-  display: flex;
-  border: 0px dashed #f5f5f5;
-  margin: 10px
+  margin: 10px;
+
 }
 .Navbar > .right {
   height: 60%;
-  width: auto;
   display: flex;
-  border: 2px dashed #f5f5f5;
+  justify-content: center;
   margin: 10px;
-}
-.Navbar > .left > .icon img{
-  border: 2px dashed #f5f5f5;
-  height: 100%;
-}
-.Navbar > .right > .icon img{
-  border: 2px dashed #f5f5f5;
-  height: 100%;
-  margin-left: 10px;
+  gap:10px;
+  cursor: pointer;
 }
 .Navbar > .right > .Search-Box {
-  border: 2px dashed #f5f5f5;
   position: relative;
   height: 100%;
   width: 200px;
@@ -62,6 +52,9 @@ body, html {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer; 
+}
+.Navbar > .right img{
+  cursor: pointer;
 }
 .Navbar > .right > .Search-Box >.left {
   left: 15px;
@@ -105,7 +98,7 @@ body, html {
 }
 
 .Navbar2 {
-  background-color: #2f2200;
+  background-color: #201802;
   height: 60px;
   width: 100%;
 }
@@ -124,8 +117,6 @@ body, html {
   width: 100%;
   height: 100%;
   aspect-ratio: 1;
-  border: 2px dashed #696464;
-
 }
 
 .AutoCarousel > .Img img {
@@ -134,7 +125,7 @@ body, html {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  position: absolute; /* 媽逼 */
+  position: absolute;
   transition: 1s ease-in-out;
 }
 
@@ -146,53 +137,102 @@ body, html {
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding: 20px;
-  margin-top: 220px; /* 頁面內容距離固定導覽列 */
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1000px;
+  max-width: 1200px;
   box-sizing: border-box;
 }
-
-/* 單個產品卡片樣式 */
 .product {
-
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
   text-align: left;
-  transition: filter 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease; /* 加入陰影過渡效果 */
+  align-items: center;
+  transition: filter 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+  height: auto;
+  width: auto;
+  gap: 10px;
 }
-
+@media (min-width: 1200px) {
+  .Product-List {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 900px) and (max-width: 1199px) {
+  .Product-List {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 600px) and (max-width: 899px) {
+  .Product-List {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 599px) {
+  .Product-List {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 .product:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3 );
+  color:rgb(187, 135, 2);
 }
-
-.Product-Image {
+.product > img {
   width: 100%;
 }
-
-.product h3{
-  margin: 10px;
+.product > h3 {
+  width: 80%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 5px; 
 }
 
-
-.Product-Under {
+.product > .Under {
   display: flex;
   align-items: center;
-  height: 16px;
-  margin: 10px;
-  justify-content: space-between; 
+  justify-content: space-between;
+  height: 20px;
+  width: 80%;
+  margin-bottom: 10px;
 }
-.Product-Under img {
-  height: 100%; 
-}
-.Product-Under p {
+.product > .Under > p {
   color: #ff0000;
+  margin: 0; 
 }
-.Product-Under-Icon {
-  height: 100%; 
+.product > .Under > .Icon {
+  display: flex;
+  margin: 10px;
+  gap: 5px;
+  height: 100%;
+}
+.product > .Under > .Icon > img{
+  filter: invert(1);
+  height: 100%;
 }
 img.favorite {
   filter: brightness(0) saturate(100%) invert(83%) sepia(63%) saturate(579%) hue-rotate(-45deg) brightness(95%) contrast(90%);
 }
 
+.Notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  padding: 15px 30px;
+  border-radius: 5px;
+  font-size: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+.Notification.Show {
+  opacity: 1;
+  visibility: visible;
+}
 
 

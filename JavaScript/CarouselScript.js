@@ -12,26 +12,68 @@ const SquareImagesList = [
   { "image": "Image/Square/Square11.jpg" }
 ];
 
-const Pos = document.querySelectorAll('.AutoCarousel .Img img');
-
-Pos.forEach((img, index) => {
-  const imageIndex = Math.floor(index / 2); // 每兩個圖片顯示相同的圖片
-  img.src = SquareImagesList[imageIndex].image; // 設定圖片
-});
-
-let CurrentPosIndex = 1;
-let CurrentListIndex = 2;
+let CurrentPosIndex;
+let CurrentListIndex;
+let intervalId = null;  // 儲存 setInterval 返回的 ID
 
 function changeImage() {
-  // 隱藏當前圖片
+  const Pos = document.querySelectorAll('.AutoCarousel .Img img');
+  
   CurrentListIndex = (CurrentListIndex + 1) % SquareImagesList.length;
-  Pos[CurrentPosIndex-1].src = SquareImagesList[CurrentListIndex].image;
-  Pos[CurrentPosIndex].style.opacity = 0; 
+  
+  Pos[CurrentPosIndex - 1].src = SquareImagesList[CurrentListIndex].image;
+  Pos[CurrentPosIndex].style.opacity = 0;
+
   setTimeout(() => {
-  Pos[CurrentPosIndex].src = SquareImagesList[CurrentListIndex].image;
-  Pos[CurrentPosIndex].style.opacity = 1;
-  CurrentPosIndex = (CurrentPosIndex + 2) % Pos.length;
-}, 1000);
+    Pos[CurrentPosIndex].src = SquareImagesList[CurrentListIndex].image;
+    Pos[CurrentPosIndex].style.opacity = 1;
+    CurrentPosIndex = (CurrentPosIndex + 2) % Pos.length;
+  }, 1000);
 }
 
-setInterval(changeImage, 1500);
+function UpdateImages() {
+  
+  const container = document.querySelector('.AutoCarousel');
+  const screenWidth = window.innerWidth;
+
+    let numImgDivs;
+  if (screenWidth >= 1280) {
+    numImgDivs = 7;  // 大螢幕顯示 7
+  } else if (screenWidth >= 1024) {
+    numImgDivs = 5;  // 中等螢幕顯示 5
+  } else {
+    numImgDivs = 3;  // 小螢幕顯示 3
+  }
+
+  CurrentListIndex = numImgDivs - 1;
+  CurrentPosIndex = 1;
+
+  // 先清空容器內的所有內容
+  container.innerHTML = '';
+
+  // 動態生成 Img div 和其中的 img 元素
+  for (let i = 0; i < numImgDivs; i++) {
+    const imgDiv = document.createElement('div'); // 創建新的 div
+    imgDiv.className = 'Img'; // 給 div 添加 Img 類別
+    
+    // 為每個 Img div 添加兩張圖片
+    for (let j = 1; j <= 2; j++) {
+      const img = document.createElement('img');
+      img.src = SquareImagesList[i].image; // 設定圖片來源
+      imgDiv.appendChild(img);
+    }
+
+    container.appendChild(imgDiv);  // 把 Img div 添加到 AutoCarousel 容器中
+  }
+
+  // 確保 setInterval 只設置一次
+  if (intervalId === null) {
+    intervalId = setInterval(changeImage, 1500);
+  }
+}
+
+
+UpdateImages();
+
+
+window.addEventListener('resize', UpdateImages);
