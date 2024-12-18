@@ -2,36 +2,9 @@ body, html {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden;
-  font-size: 1rem;
-}
-/* 當螢幕寬度大於等於 1200px 時，字體大小設置為 1.5倍 */
-@media (min-width: 1200px) {
-  body {
-    font-size: 1rem;
-  }
+  scroll-behavior: smooth;
 }
 
-/* 當螢幕寬度大於等於 900px 且小於 1200px 時，字體大小設置為 1.3倍 */
-@media (min-width: 900px) and (max-width: 1199px) {
-  body {
-    font-size: 1.1rem;
-  }
-}
-
-/* 當螢幕寬度大於等於 600px 且小於 900px 時，字體大小設置為 1.1倍 */
-@media (min-width: 600px) and (max-width: 899px) {
-  body {
-    font-size: 1.3rem;
-  }
-}
-
-/* 當螢幕寬度小於 600px 時，字體大小設置為 1倍 */
-@media (max-width: 599px) {
-  body {
-    font-size: 1.5rem;
-  }
-}
 
 .Navbar {
   align-items: center;
@@ -39,7 +12,7 @@ body, html {
   justify-content: space-between;
   background-color: #201802;
   position: fixed;
-  height: 5%;
+  height: 60px;
   width: 100%;
   top: 0; 
   z-index: 999;
@@ -126,7 +99,10 @@ body, html {
 }
 
 .Navbar2 {
+  z-index: 999;
   background-color: #201802;
+  position: sticky;
+  top: 60px;
   height: 60px;
   width: 100%;
 }
@@ -137,7 +113,6 @@ body, html {
   align-items: center;
   width: 100%;
   height: auto;
-
 }
 
 .AutoCarousel02 > .Img {
@@ -169,7 +144,6 @@ body, html {
   margin-right: auto;
   max-width: 1200px;
   box-sizing: border-box;
-  align-items: center;    /* 垂直居中 */
 }
 .product {
   display: flex;
@@ -186,21 +160,25 @@ body, html {
 @media (min-width: 1200px) {
   .Product-List {
     grid-template-columns: repeat(4, 1fr);
+    font-size: 1rem;
   }
 }
-@media (min-width: 900px) and (max-width: 1199px) {
+@media (min-width: 1000px) and (max-width: 1199px) {
+  .Product-List {
+    grid-template-columns: repeat(3, 1fr);
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 700px) and (max-width: 999px) {
   .Product-List {
     grid-template-columns: repeat(2, 1fr);
+    font-size: 1.4rem;
   }
 }
-@media (min-width: 600px) and (max-width: 899px) {
-  .Product-List {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 599px) {
+@media (max-width: 699px) {
   .Product-List {
     grid-template-columns: repeat(1, 1fr);
+    font-size: 1.6rem;
   }
 }
 .product:hover {
