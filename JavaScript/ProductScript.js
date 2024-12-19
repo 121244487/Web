@@ -120,7 +120,24 @@ function SearchList() {
 }
 
 function FavoriteList() {
-  const filteredProducts = products.filter(product => favorites.includes(product.name));
+  const scheduleElement = document.querySelector('.Schedule');  // 確保選擇正確的元素
 
-  displayProducts(filteredProducts);
+  // 清空目前顯示的內容
+  scheduleElement.innerHTML = '';  
+
+  if (favorites.length === 0) {
+    // 如果 favorites 為空，顯示通知
+    ShowNotification('目前還沒有收藏商品');
+  } else {
+    // 如果 favorites 有商品，過濾商品並顯示
+    const filteredProducts = products.filter(product => favorites.includes(product.name));
+    
+    // 顯示收藏清單標題
+    const noFavoritesMessage = document.createElement('p');
+    noFavoritesMessage.textContent = '收藏清單';
+    scheduleElement.appendChild(noFavoritesMessage);
+    
+    // 顯示篩選後的商品
+    displayProducts(filteredProducts);
+  }
 }

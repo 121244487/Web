@@ -3,44 +3,90 @@ body, html {
   padding: 0;
   width: 100%;
   scroll-behavior: smooth;
+  font-size: 1rem;
 }
 
-
+@keyframes ZoomOutIn {
+  0% {
+    transform: scale(0.5); /* 開始時縮小 */
+    opacity: 0; /* 開始時完全透明 */
+  }
+  100% {
+    transform: scale(1); /* 最後恢復正常大小 */
+    opacity: 1; /* 最後完全顯示 */
+  }
+}
+@keyframes SlideIn {
+  0% {
+    transform: translateX(-100%); /* 從左側外部滑動進來 */
+  }
+  100% {
+    transform: translateX(0); /* 最終位置 */
+  }
+}
+@keyframes Bounce {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  70% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes Pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .Navbar {
-  align-items: center;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: #201802;
   position: fixed;
   height: 60px;
   width: 100%;
   top: 0; 
   z-index: 999;
-
+  padding: 0;
 }
-.Navbar > img{
+.Navbar > .right,.Navbar > .left{
   height: 60%;
   width: auto;
-  margin: 10px;
-
-}
-.Navbar > .right {
-  height: 60%;
   display: flex;
   justify-content: center;
   margin: 10px;
   gap:10px;
   cursor: pointer;
+  border: 0px dashed #ffffff;
 }
 .Navbar > .right > .Search-Box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: relative;
   height: 100%;
-  width: 200px;
+  width: auto;
+  padding: 0 0px;
 }
 .Navbar > .right > .Search-Box input{
   width: 100%;
   height: 100%;
-  padding: 0 50px;
+  padding: 0 40px;
   font-size: 16px;
   border-radius: 50px;
   outline: none;
@@ -84,11 +130,13 @@ body, html {
   z-index: -1; 
   
 }
+
 .MainImg img{
   width: 50px;
   height: 50px;
   padding-left: 10%;
   bottom: 10px;
+  animation: Bounce 1s ease-in-out infinite;
 }
 .MainImg > p{
   color: #f5f5f5;
@@ -105,6 +153,29 @@ body, html {
   top: 60px;
   height: 60px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Navbar2 > .Block{
+  display: flex;
+  animation: SlideIn 1s ease-in-out forwards;
+  padding: 5%;
+}
+.Navbar2 > .Block a {
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
+  position: relative; 
+  font-size: 30px; 
+  font-weight: bold;
+  transition: color 0.5s ease; 
+  animation: Pulse  5s ease-in-out infinite;
+  white-space: nowrap;
+}
+.Navbar2 >.Block a:hover {
+  color: #FFD700;
 }
 
 .AutoCarousel02 {
@@ -120,6 +191,7 @@ body, html {
   width: 100%;
   height: 100%;
   aspect-ratio: 1;
+  
 }
 
 .AutoCarousel02 > .Img img {
@@ -134,7 +206,13 @@ body, html {
 
 
 
-
+.Schedule {
+  display: grid;
+  gap: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+}
 .Product-List {
   border: 0px dashed #ff0303;
   display: grid;
@@ -155,30 +233,37 @@ body, html {
   height: auto;
   width: auto;
   gap: 10px;
-
 }
 @media (min-width: 1200px) {
   .Product-List {
     grid-template-columns: repeat(4, 1fr);
+  }
+  body {
     font-size: 1rem;
   }
 }
 @media (min-width: 1000px) and (max-width: 1199px) {
   .Product-List {
     grid-template-columns: repeat(3, 1fr);
+  }
+  body {
     font-size: 1.2rem;
   }
 }
 @media (min-width: 700px) and (max-width: 999px) {
   .Product-List {
     grid-template-columns: repeat(2, 1fr);
+  }
+  body {
     font-size: 1.4rem;
   }
 }
 @media (max-width: 699px) {
   .Product-List {
     grid-template-columns: repeat(1, 1fr);
-    font-size: 1.6rem;
+  }
+  body {
+    font-size: 3rem;
   }
 }
 .product:hover {
@@ -232,6 +317,7 @@ img.favorite {
   font-size: 60px;
   border: 0px dashed #ff0303;
   color:rgb(187, 135, 2);
+  animation: ZoomOutIn 1s ease-in-out forwards;
 }
 .Varietis > .Line{
   width: 5%;

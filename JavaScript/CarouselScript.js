@@ -54,7 +54,6 @@ function UpdateImages() {
   for (let i = 0; i < numImgDivs; i++) {
     const imgDiv = document.createElement('div'); // 創建新的 div
     imgDiv.className = 'Img'; // 給 div 添加 Img 類別
-    
     // 為每個 Img div 添加兩張圖片
     for (let j = 1; j <= 2; j++) {
       const img = document.createElement('img');
