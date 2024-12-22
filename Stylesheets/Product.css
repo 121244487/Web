@@ -1,0 +1,95 @@
+.Product-List {
+  border: 0px dashed #ff0303;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);  /* 預設顯示 4 列 */
+  gap: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  text-align: left;
+  align-items: center;
+  transition: filter 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+  height: auto;
+  width: auto;
+  gap: 10px;
+  opacity: 0;
+}
+.product.visible {
+  opacity: 1;
+  animation: ZoomOutIn 0.5s ease-out forwards;
+}
+.product:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3 );
+  color:rgb(187, 135, 2);
+}
+.product > img {
+  width: 100%;
+}
+.product > h3 {
+  width: 80%;
+  height: auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0; 
+}
+.product > .Under {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 20px;
+  width: 80%;
+  margin-bottom: 10px;
+}
+.product > .Under > p {
+  color: #ff0000;
+  margin: 0; 
+}
+.product > .Under > .Icon {
+  display: flex;
+  margin: 10px;
+  gap: 5px;
+  height: 100%;
+}
+.product > .Under > .Icon > img{
+  filter: invert(1);
+  height: 100%;
+}
+@media (min-width: 1200px) {
+    .Product-List {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    body {
+      font-size: 1rem;
+    }
+  }
+  @media (min-width: 1000px) and (max-width: 1199px) {
+    .Product-List {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    body {
+      font-size: 1.25rem;
+    }
+  }
+  @media (min-width: 700px) and (max-width: 999px) {
+    .Product-List {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    body {
+      font-size: 1.5rem;
+    }
+  } 
+  @media (max-width: 699px) {
+    .Product-List {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    body {
+      font-size: 3rem;
+    }
+}

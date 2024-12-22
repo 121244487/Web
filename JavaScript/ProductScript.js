@@ -67,12 +67,28 @@ function ShowNotification(message) {
 }
 
 
+// 設置 IntersectionObserver 來監控元素是否進入或離開視窗
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // 當元素進入視窗時，添加 'visible' 類來觸發動畫
+      entry.target.classList.add('visible');
+    } else {
+      // 當元素離開視窗時，移除 'visible' 類來隱藏
+      entry.target.classList.remove('visible');
+    }
+  });
+}, {
+  threshold: 0.5 // 觸發動畫的比例，0.5表示當元素至少 50% 進入視窗時觸發
+});
+
+// 動態生成產品並監控每個產品的顯示
 function displayProducts(products) {
   const container = document.getElementById('product-list');
-  container.innerHTML = '';
+  container.innerHTML = '';  // 清空容器
 
   // 動態生成產品列表
-  products.forEach(product => {
+  products.forEach((product) => {
     const productDiv = document.createElement('div');
     productDiv.classList.add('product');
 
@@ -80,32 +96,29 @@ function displayProducts(products) {
     const isFavorite = favorites.includes(product.name);
 
     productDiv.innerHTML = `
-
-        <img src="${product.image}">
-
-        <h3>${product.name}</h3>
-
-        <div class="Under">
-
-          <p>NT$${product.price}</p>
-
-          <div class="Icon">
-
+      <img src="${product.image}">
+      <h3>${product.name}</h3>
+      <div class="Under">
+        <p>NT$${product.price}</p>
+        <div class="Icon">
           <img src="Image/Favorites_Icon.png" alt="加入收藏" class="${isFavorite ? 'favorite' : ''}" onclick="addToFavorites('${product.name}', this)">
           <img src="Image/Cart_Icon.png" alt="加入購物車">
-
-          </div>
-
         </div>
+      </div>
     `;
 
+    // 把產品添加到容器中
     container.appendChild(productDiv);
+
+    // 使用 IntersectionObserver 監控每個動態創建的商品
+    observer.observe(productDiv);
   });
 }
 
+
 // 當頁面加載時，顯示所有產品
 window.onload = () => {
-  displayProducts(products);
+  ALLList();
 };
 
 // 搜尋產品功能
@@ -140,4 +153,7 @@ function FavoriteList() {
     // 顯示篩選後的商品
     displayProducts(filteredProducts);
   }
+}
+function ALLList() {
+  displayProducts(products);
 }

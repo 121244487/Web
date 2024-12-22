@@ -17,7 +17,7 @@ let CurrentListIndex;
 let intervalId = null;
 
 function changeImage() {
-  const Pos = document.querySelectorAll('.AutoCarousel02 .Img img');
+  const Pos = document.querySelectorAll('.Carousel_02 .Img img');
   
   CurrentListIndex = (CurrentListIndex + 1) % SquareImagesList.length;
   
@@ -33,7 +33,7 @@ function changeImage() {
 
 function UpdateImages() {
   
-  const container = document.querySelector('.AutoCarousel02');
+  const container = document.querySelector('.Carousel_02');
   const screenWidth = window.innerWidth;
 
   let numImgDivs;
