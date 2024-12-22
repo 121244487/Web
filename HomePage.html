@@ -11,23 +11,26 @@
 </head>
 <body>
   <header>
-
     <div class="Navbar_01">
 
       <div class = "left">
-      <img src="Image/List_Icon.png" alt="總攬" class="Onclick_List">
+      <img src="Image/List_Icon.png" alt="總攬">
+      <div class="Dropdown_List">
+        <a href="#">關於我們</a>
+        <a href="#">訂購配送</a>
+        <a href="#">烘焙方法</a>
+      </div>
       </div>
       <div class = "right">
-
         <div class="Search-Box">
           <input type="text" id="searchInput" placeholder="" oninput="SearchList()">
           <img src="Image/Magnifier_Icon.png" alt="搜尋圖示" class="left"> 
           <img src="Image/Mic_Icon.png" alt="麥克風圖示" class="right">
         </div>
 
-        <img src="Image/FavoritesList_Icon.png" alt="收藏清單" onclick="FavoriteList()">
-        <img src="Image/Cart_Icon.png" alt="購物車清單">
-        <img src="Image/User_Icon.png" alt="會員資料">
+        <img src="Image/FavoritesList_Icon.png" alt="收藏清單" onclick="FavoriteList()" class="icon">
+        <img src="Image/Cart_Icon.png" alt="購物車清單" class="icon">
+        <img src="Image/User_Icon.png" alt="會員資料" class="icon">
 
       </div>
 
@@ -68,9 +71,7 @@
   <div class="Notification"></div>
 
   <div class="Breadcrumb">
-    <span onclick="ALLList()">首頁</span>
-    <span> &gt; </span>
-    <span id="current-page">首頁</span>
+    <a href="#VARIETIS" onclick="ALLList()">首頁</a>
   </div>
 
   <div class="Product-List" id="product-list"></div>

@@ -19,10 +19,16 @@
   width: auto;
   gap: 10px;
   opacity: 0;
+  transform: scale(0.8); /* 初始時縮小 */
+  visibility: hidden; /* 初始狀態為隱藏 */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out, visibility 0.5s ease-out;
+
 }
 .product.visible {
   opacity: 1;
-  animation: ZoomOutIn 0.5s ease-out forwards;
+  transform: scale(1); /* 恢復正常大小 */
+  visibility: visible; /* 顯示元素 */
+  transition: opacity 0.5s ease-in, transform 0.5s ease-in;
 }
 .product:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3 );
@@ -58,8 +64,10 @@
   height: 100%;
 }
 .product > .Under > .Icon > img{
-  filter: invert(1);
   height: 100%;
+}
+img.favorite {
+  filter: brightness(0) saturate(100%) invert(83%) sepia(63%) saturate(579%) hue-rotate(-45deg) brightness(95%) contrast(90%);
 }
 @media (min-width: 1200px) {
     .Product-List {

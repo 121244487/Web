@@ -7,7 +7,7 @@
   height: 60px;
   width: 100%;
   top: 0; 
-  z-index: 999;
+  z-index: 1000;
   padding: 0;
 }
 .Navbar_01 > .right,.Navbar_01 > .left{
@@ -19,6 +19,9 @@
   gap:10px;
   cursor: pointer;
   border: 0px dashed #ffffff;
+}
+.Navbar_01 > .right p{
+  color: #ffffff;
 }
 .Navbar_01 > .right > .Search-Box {
   display: flex;
@@ -55,7 +58,9 @@
 .Navbar_01 > .right > .Search-Box >.right {
   right: 15px;
 }
-
+.icon:hover {
+  transform: scale(1.2);
+}
 .Navbar_02 {
     z-index: 999;
     background-color: #201802;
@@ -66,24 +71,58 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .Navbar_02 > .Block{
-    display: flex;
-    animation: SlideIn 1s ease-in-out forwards;
-    padding: 5%;
-  }
-  .Navbar_02 > .Block a {
-    text-align: center;
-    display: inline-block;
-    text-decoration: none;
-    color: #ffffff;
-    position: relative; 
-    font-size: 30px; 
-    font-weight: bold;
-    transition: color 0.5s ease; 
-    animation: Pulse  5s ease-in-out infinite;
-    white-space: nowrap;
-  }
-  .Navbar_02 >.Block a:hover {
-    color: #FFD700;
-  }
+}
+.Navbar_02 > .Block{
+  display: flex;
+  animation: SlideIn 1s ease-in-out forwards;
+  padding: 5%;
+}
+.Navbar_02 > .Block a {
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
+  position: relative; 
+  font-size: 30px; 
+  font-weight: bold;
+  transition: color 0.5s ease; 
+  animation: Pulse  5s ease-in-out infinite;
+  white-space: nowrap;
+}
+.Navbar_02 >.Block a:hover {
+  color: #FFD700;
+}
+.Dropdown_List {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 200px;
+  height: 100%;
+  visibility: hidden;
+  transition: transform 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  display: flex;
+  gap: 5%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Dropdown_List a {
+  writing-mode: vertical-rl;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 30px;
+  animation: Pulse  5s ease-in-out infinite;
+}
+.Dropdown_List a:hover {
+  color: #FFD700;
+}
+.left:hover .Dropdown_List {
+  visibility: visible;
+  transform: translateX(0);
+}
+.left:not(:hover) .Dropdown_List {
+  transform: translateX(-100%);
+  visibility: hidden;
+}

@@ -39,7 +39,6 @@ const products = [
 
 let favorites = [];
 
-// 加入或移除收藏
 function addToFavorites(productName, imgElement) {
   
   if (!favorites.includes(productName)) {
@@ -50,15 +49,13 @@ function addToFavorites(productName, imgElement) {
     favorites = favorites.filter(name => name !== productName);
     imgElement.classList.remove('favorite');
     ShowNotification('❌ 已取消收藏');
-  }
-  
+  } 
 }
 
 function ShowNotification(message) {
   let notification = document.querySelector('.Notification');
 
   notification.textContent = message;
-  
   notification.classList.add('Show');
   
   setTimeout(() => {
@@ -67,33 +64,32 @@ function ShowNotification(message) {
 }
 
 
-// 設置 IntersectionObserver 來監控元素是否進入或離開視窗
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      // 當元素進入視窗時，添加 'visible' 類來觸發動畫
+      
       entry.target.classList.add('visible');
     } else {
-      // 當元素離開視窗時，移除 'visible' 類來隱藏
+      
       entry.target.classList.remove('visible');
     }
   });
 }, {
-  threshold: 0.5 // 觸發動畫的比例，0.5表示當元素至少 50% 進入視窗時觸發
+  threshold: 0.5
 });
 
-// 動態生成產品並監控每個產品的顯示
 function displayProducts(products) {
   const container = document.getElementById('product-list');
-  container.innerHTML = '';  // 清空容器
+  container.innerHTML = '';
 
-  // 動態生成產品列表
+
   products.forEach((product) => {
     const productDiv = document.createElement('div');
     productDiv.classList.add('product');
 
-    // 檢查該產品是否已加入收藏，並改變圖示顏色
+
     const isFavorite = favorites.includes(product.name);
+
 
     productDiv.innerHTML = `
       <img src="${product.image}">
@@ -101,59 +97,96 @@ function displayProducts(products) {
       <div class="Under">
         <p>NT$${product.price}</p>
         <div class="Icon">
-          <img src="Image/Favorites_Icon.png" alt="加入收藏" class="${isFavorite ? 'favorite' : ''}" onclick="addToFavorites('${product.name}', this)">
-          <img src="Image/Cart_Icon.png" alt="加入購物車">
+          <img src="Image/AddFavorites_Icon.png" alt="加入收藏" class="${isFavorite ? 'favorite' : ''}" onclick="addToFavorites('${product.name}', this)">
+          <img src="Image/AddCart_Icon.png" alt="加入購物車">
         </div>
       </div>
     `;
 
-    // 把產品添加到容器中
     container.appendChild(productDiv);
 
-    // 使用 IntersectionObserver 監控每個動態創建的商品
     observer.observe(productDiv);
   });
+
+  if (SearchListing === false)
+  {
+  CurrentProducts = products.map(product => ({
+    name: product.name,
+    description: product.description,
+    price: product.price,
+    image: product.image
+  }));
+}
 }
 
-
-// 當頁面加載時，顯示所有產品
 window.onload = () => {
   ALLList();
 };
 
-// 搜尋產品功能
+let CurrentProducts = [];
+let SearchListing = false;
 function SearchList() {
   const input = document.getElementById('searchInput').value.toLowerCase();
-  const filteredProducts = products.filter(product =>
-    product.name.toLowerCase().includes(input) ||
-    product.description.toLowerCase().includes(input)
-  );
 
-  displayProducts(filteredProducts);
+  
+  if (input === '') {
+    displayProducts(CurrentProducts);
+    SearchListing = false;
+  } else {
+    
+    const filteredProducts = CurrentProducts.filter(product =>
+      product.name.toLowerCase().includes(input) ||
+      product.description.toLowerCase().includes(input)
+    );
+
+    
+    if (filteredProducts.length > 0) {
+      SearchListing = true;
+      displayProducts(filteredProducts);
+    } else {
+      const container = document.getElementById('product-list');
+      container.innerHTML = '<p>沒有符合條件的產品。</p>';
+    }
+  }
 }
 
+let FavoriteListing = false;
 function FavoriteList() {
-  const scheduleElement = document.querySelector('.Schedule');  // 確保選擇正確的元素
-
-  // 清空目前顯示的內容
-  scheduleElement.innerHTML = '';  
-
+  if (FavoriteListing === false){
+  const Breadcrumb = document.querySelector('.Breadcrumb');
   if (favorites.length === 0) {
-    // 如果 favorites 為空，顯示通知
     ShowNotification('目前還沒有收藏商品');
   } else {
-    // 如果 favorites 有商品，過濾商品並顯示
+    FavoriteListing = true;
     const filteredProducts = products.filter(product => favorites.includes(product.name));
-    
-    // 顯示收藏清單標題
+
     const noFavoritesMessage = document.createElement('p');
     noFavoritesMessage.textContent = '收藏清單';
-    scheduleElement.appendChild(noFavoritesMessage);
     
-    // 顯示篩選後的商品
     displayProducts(filteredProducts);
+    
+    const separator = document.createElement('span');
+    separator.textContent = ' ＞ ';
+    Breadcrumb.appendChild(separator);
+
+    
+    const favoritesLink = document.createElement('a');
+    favoritesLink.href = "#Favorites";
+    favoritesLink.textContent = "收藏清單";
+    Breadcrumb.appendChild(favoritesLink);
+  }
   }
 }
 function ALLList() {
+  FavoriteListing = false;
+  const Breadcrumb = document.querySelector('.Breadcrumb');
+  Breadcrumb.innerHTML = '';
+  const breadcrumbLink = document.createElement('a');
+  breadcrumbLink.href = "#VARIETIS";
+  breadcrumbLink.textContent = "首頁";
+  breadcrumbLink.onclick = function() {
+    ALLList();
+  };
+  Breadcrumb.appendChild(breadcrumbLink);
   displayProducts(products);
 }
