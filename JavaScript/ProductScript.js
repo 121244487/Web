@@ -155,7 +155,7 @@ function FavoriteList() {
   if (FavoriteListing === false){
   const Breadcrumb = document.querySelector('.Breadcrumb');
   if (favorites.length === 0) {
-    ShowNotification('目前還沒有收藏商品');
+    ShowNotification('還沒有收藏商品哦❤️');
   } else {
     FavoriteListing = true;
     const filteredProducts = products.filter(product => favorites.includes(product.name));

@@ -9,7 +9,8 @@ const SquareImagesList = [
   { "image": "Image/Square/Square08.jpg" },
   { "image": "Image/Square/Square09.jpg" },
   { "image": "Image/Square/Square10.jpg" },
-  { "image": "Image/Square/Square11.jpg" }
+  { "image": "Image/Square/Square11.jpg" },
+  { "image": "Image/Square/Square12.jpg" }
 ];
 
 let CurrentPosIndex;

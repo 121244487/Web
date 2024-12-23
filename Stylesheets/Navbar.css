@@ -59,7 +59,7 @@
   right: 15px;
 }
 .icon:hover {
-  transform: scale(1.2);
+  animation: Pulse  0.5s ease-in-out infinite;
 }
 .Navbar_02 {
     z-index: 999;
@@ -86,12 +86,14 @@
   font-size: 30px; 
   font-weight: bold;
   transition: color 0.5s ease; 
-  animation: Pulse  5s ease-in-out infinite;
   white-space: nowrap;
 }
 .Navbar_02 >.Block a:hover {
   color: #FFD700;
+  animation: Pulse  0.5s ease-in-out infinite;
 }
+
+
 .Dropdown_List {
   position: fixed;
   top: 0;
