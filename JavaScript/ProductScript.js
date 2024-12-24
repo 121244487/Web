@@ -36,8 +36,10 @@ const products = [
   }
   
 ];
-
 let favorites = [];
+let cart = [];
+let CurrentProducts = [];
+let SearchListing = false;
 
 function addToFavorites(productName, imgElement) {
   
@@ -50,6 +52,30 @@ function addToFavorites(productName, imgElement) {
     imgElement.classList.remove('favorite');
     ShowNotification('❌ 已取消收藏');
   } 
+}
+
+function addToCart(productName) {
+  const product = products.find(item => item.name === productName);
+  if (product) {
+    
+    const existingProductIndex = cart.findIndex(item => item.name === product.name);
+
+    if (existingProductIndex !== -1) {
+      cart[existingProductIndex].quantity += 1;
+    } else {
+      cart.push({
+        name: product.name,
+        image: product.image,
+        price: product.price,
+        quantity: 1
+      });
+    }
+  ShowNotification('已加入購物車🛒');
+  CartList();
+  }
+  else {
+    ShowNotification('商品不存在');
+  }
 }
 
 function ShowNotification(message) {
@@ -74,8 +100,8 @@ const observer = new IntersectionObserver((entries, observer) => {
       entry.target.classList.remove('visible');
     }
   });
-}, {
-  threshold: 0.5
+    }, {
+      threshold: 0.5
 });
 
 function displayProducts(products) {
@@ -98,7 +124,7 @@ function displayProducts(products) {
         <p>NT$${product.price}</p>
         <div class="Icon">
           <img src="Image/AddFavorites_Icon.png" alt="加入收藏" class="${isFavorite ? 'favorite' : ''}" onclick="addToFavorites('${product.name}', this)">
-          <img src="Image/AddCart_Icon.png" alt="加入購物車">
+          <img src="Image/AddCart_Icon.png" alt="加入購物車" " onclick="addToCart('${product.name}')">
         </div>
       </div>
     `;
@@ -123,8 +149,6 @@ window.onload = () => {
   ALLList();
 };
 
-let CurrentProducts = [];
-let SearchListing = false;
 function SearchList() {
   const input = document.getElementById('searchInput').value.toLowerCase();
 
@@ -189,4 +213,116 @@ function ALLList() {
   };
   Breadcrumb.appendChild(breadcrumbLink);
   displayProducts(products);
+}
+
+function CartList() {
+  const DropdownCart = document.querySelector('.Dropdown_Cart');
+  
+  // 清空購物車的內容（防止重複顯示）
+  DropdownCart.innerHTML = '';
+
+  cart.forEach((item, index) => {  // 在這裡加入 index 參數
+    // 創建外層容器
+    const row = document.createElement('div');
+    row.classList.add('rows');
+
+    // 商品圖片
+    const img = document.createElement('img');
+    img.src = item.image;
+    img.alt = '商品圖';
+    row.appendChild(img);
+
+    // topunder 區域
+    const topunder = document.createElement('div');
+    topunder.classList.add('topunder');
+
+    // top 區域
+    const top = document.createElement('div');
+    top.classList.add('top');
+
+    const name = document.createElement('div');
+    name.classList.add('name');
+    const nameText = document.createElement('p');
+    nameText.textContent = item.name;
+    name.appendChild(nameText);
+    top.appendChild(name);
+
+    const quantityLabel = document.createElement('p');
+    quantityLabel.textContent = '數量:';
+    const quantityInput = document.createElement('input');
+    quantityInput.type = 'number';
+    quantityInput.value = item.quantity;
+    top.appendChild(quantityLabel);
+    top.appendChild(quantityInput);
+
+    // 監聽數量輸入事件
+    quantityInput.addEventListener('input', (e) => {
+      const newQuantity = parseInt(e.target.value);  // 取得新的數量
+      if (newQuantity > 0) {  // 確保數量大於 0
+        cart[index].quantity = newQuantity;  // 更新購物車中的商品數量
+        CartList();  // 重新渲染購物車
+        ShowNotification(`商品數量已更新為 ${newQuantity}`);
+      } else {
+        e.target.value = item.quantity;  // 如果數量不合法，重設為原來的數量
+        ShowNotification('數量必須大於 0');
+      }
+    });
+
+    topunder.appendChild(top);
+
+    // under 區域
+    const under = document.createElement('div');
+    under.classList.add('under');
+
+    const price = document.createElement('p');
+    price.classList.add('price');
+    price.textContent = `NT$${item.price}`;
+    under.appendChild(price);
+
+    // 垃圾桶圖示
+    const trashIcon = document.createElement('img');
+    trashIcon.src = 'Image/Trash_Icon.png';
+    trashIcon.alt = '垃圾桶';
+    trashIcon.classList.add('icon');
+    trashIcon.addEventListener('click', () => {
+      removeFromCart(index);  // 傳遞索引來刪除商品
+    });
+    under.appendChild(trashIcon);
+
+    topunder.appendChild(under);
+
+    // 將 topunder 加入 row
+    row.appendChild(topunder);
+
+    // 將整個商品行加入到 Dropdown_Cart
+    DropdownCart.appendChild(row);
+  });
+}
+function removeFromCart(index) {
+  cart.splice(index, 1);  // 刪除商品
+  CartList();  // 重新渲染購物車
+  ShowNotification('❌ 商品已從購物車移除');
+}
+function addToCart(productName) {
+  const product = products.find(item => item.name === productName);
+  if (product) {
+    
+    const existingProductIndex = cart.findIndex(item => item.name === product.name);
+
+    if (existingProductIndex !== -1) {
+      cart[existingProductIndex].quantity += 1;
+    } else {
+      cart.push({
+        name: product.name,
+        image: product.image,
+        price: product.price,
+        quantity: 1
+      });
+    }
+  ShowNotification('已加入購物車🛒');
+  CartList();
+  }
+  else {
+    ShowNotification('商品不存在');
+  }
 }

@@ -20,6 +20,7 @@
         <a href="#">烘焙方法</a>
       </div>
       </div>
+
       <div class = "right">
         <div class="Search-Box">
           <input type="text" id="searchInput" placeholder="" oninput="SearchList()">
@@ -28,9 +29,22 @@
         </div>
 
         <img src="Image/FavoritesList_Icon.png" alt="收藏清單" onclick="FavoriteList()" class="icon">
-        <img src="Image/Cart_Icon.png" alt="購物車清單" class="icon">
-        <img src="Image/User_Icon.png" alt="會員資料" class="icon">
 
+
+
+        <div class="cart">
+
+          <img src="Image/Cart_Icon.png" alt="購物車清單" class="icon cart">
+
+          <div class="Dropdown_Cart">
+
+          </div>
+
+        </div>
+
+
+
+        <img src="Image/User_Icon.png" alt="會員資料" class="icon">
       </div>
 
     </div>
@@ -41,7 +55,7 @@
     <div class="Scroll">
       <p>COFFEE<br>BEANS</p>
       <a href="#VARIETIS" >
-      <img src="Image/Arrow_Icon.png">
+      <img src="Image/Arrow_Icon.png" >
       </a>
     </div>
   </div>
@@ -70,12 +84,15 @@
   </div>
   
   <div class="Notification"></div>
+  <div class="Content">
 
   <div class="Breadcrumb">
     <a href="#VARIETIS" onclick="ALLList()">首頁</a>
   </div>
 
   <div class="Product-List" id="product-list"></div>
+
+  </div>
 
   <script src="JavaScript/CarouselScript.js"></script>
   

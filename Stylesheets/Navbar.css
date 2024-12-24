@@ -128,3 +128,88 @@
   transform: translateX(-100%);
   visibility: hidden;
 }
+
+/* 初始狀態：隱藏購物車下拉選單 */
+.Dropdown_Cart {
+  display: none;
+  position: absolute;
+  top: 80%;
+  background-color: #ffffff; /* 背景色為白色 */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: auto;
+}
+
+.cart:hover .Dropdown_Cart {
+  display: block;
+}
+
+.cart {
+  height: 100%;
+  display: flex;
+  flex-direction: column; 
+  justify-content: flex-start; /* 上對齊 */
+  align-items: flex-end; /* 右對齊 */
+}
+.cart img {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+
+.Dropdown_Cart > .rows {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+.Dropdown_Cart > .rows:hover {
+  background-color: #ccc;
+}
+.Dropdown_Cart > .rows > img {
+  height: 60px;
+}
+.Dropdown_Cart > .rows > .topunder >.top{
+  border: 0px solid #ff0000;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+}
+.Dropdown_Cart > .rows > .topunder >.top p{
+  color: #000;
+}
+.Dropdown_Cart > .rows >.topunder > .top > .name{
+  width: 200px;
+}
+.Dropdown_Cart > .rows > .topunder >.top > .name p {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.Dropdown_Cart > .rows > .topunder {
+  gap: 10px;
+  border: 0px solid #ff0000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%; 
+}
+.Dropdown_Cart > .rows > .topunder >.under{
+  border: 0px solid #ff0000;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+}
+.Dropdown_Cart > .rows > .topunder >.top input{
+  width: 30px;
+  height: 20px;
+}
+.Dropdown_Cart > .rows > .topunder >.under img {
+  width: 20px;
+  height: 20px;
+}
+.Dropdown_Cart > .rows > .topunder > .under > .price {
+  color: #ff0000;
+}
