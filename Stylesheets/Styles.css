@@ -9,16 +9,6 @@ body, html {
 p {
   margin: 0;
 }
-@keyframes ZoomOutIn {
-  0% {
-    transform: scale(0.5);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
 @keyframes SlideIn {
   0% {
     transform: translateX(-500%);
