@@ -20,6 +20,10 @@
   cursor: pointer;
   border: 0px dashed #ffffff;
 }
+
+.Navbar_01 > .left{
+  z-index: 1000;
+}
 .Navbar_01 > .right p{
   color: #ffffff;
 }
@@ -98,24 +102,36 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color:#6F4E37;
+  box-shadow: 5px 0px 8px rgba(0, 0, 0, 0.2);
   width: 200px;
   height: 100%;
   visibility: hidden;
   transition: transform 0.5s ease-in-out, visibility 0.5s ease-in-out;
   display: flex;
-  gap: 5%;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
-.Dropdown_List a {
-  writing-mode: vertical-rl;
-  text-decoration: none;
-  color: #000;
+.Dropdown_List > .Block:nth-child(odd) {
+  background-color: #6F4E37;
+}
+
+.Dropdown_List > .Block:nth-child(even) {
+  background-color: #201802;
+}
+.Dropdown_List > .Block{
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.Dropdown_List > .Block a {
+  color: #ffffff;
   font-weight: bold;
   font-size: 30px;
-  animation: Pulse  5s ease-in-out infinite;
+  text-decoration: none;
 }
 .Dropdown_List a:hover {
   color: #FFD700;
