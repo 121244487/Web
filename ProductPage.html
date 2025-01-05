@@ -1,0 +1,420 @@
+<html lang="zh-Hant">
+<head>
+    <link rel="stylesheet" href="Stylesheets/Navbar.css">
+    <link rel="stylesheet" href="Stylesheets/Styles.css">   
+    <link rel="stylesheet" href="Stylesheets/Product.css">
+    <meta charset="UTF-8">
+    <title>要匯入的產品名</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            background-color: #8B4513;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header .menu-icon, .header .cart-icon {
+            cursor: pointer;
+        }
+
+        .content {
+            max-width:inherit;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            padding-top: 50px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: row;
+        }
+
+        .product-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .product-image img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
+
+        .product-info {
+            flex: 2;
+            margin-left: 20px;
+        }
+
+        .product-info h1 {
+            font-size: 24px;
+            color: white;
+            background-color: #8B4513;
+            padding: 5px 10px;
+            text-align: center; 
+            display: inline-block;
+            position: relative;
+            width: 100%; 
+            max-width: 800px; 
+        }
+
+        .like-button {
+            cursor: pointer;
+            font-size: 24px;
+            margin-top: 10px;
+        }
+        
+         .price {
+            font-size: 20px;
+            color: #B22222;
+            margin: 10px 0;
+            position: relative;
+            display: flex; 
+            align-items: center; 
+        }
+
+        .price span {
+            font-size: 14px;
+            color: gray;
+            position: absolute;
+            bottom: -20px;
+            right: 0;
+        }
+
+        .like-button {
+            cursor: pointer;
+            font-size: 24px;
+            margin-left: 10px; /
+        } 
+      
+        .quantity {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin: 20px 0;
+            border: 2px solid #8B4513;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 100px; 
+            height: 35px; 
+        }
+        
+      
+        
+        .quantity button {
+            background: none;
+            color: black;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .quantity input {
+            width: 50px;
+            text-align: center;
+            border: none;
+            background: none;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .quantity button:hover {
+            color: #FFD700;
+        }
+        
+       .quantity input, .quantity button {
+            height: 40px; 
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .buttons button {
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 10px; 
+            width: 270px; 
+            height: 40px; 
+            margin-right: 10px;
+        }
+
+        .buttons button:hover {
+            background-color: #6A3C13;
+        }
+
+        .additional-info {
+            margin-top: 20px;
+        }
+
+        .toggle-header {
+            cursor: pointer;
+            color: black;
+            font-size: 18px;
+            text-decoration: none; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .toggle-header:hover {
+            color: red;
+        }
+
+        .toggle-header.open {
+            color: #8B4513;
+        }
+
+        .hidden-text {
+            display: none;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        .tab-container {
+            display: flex;
+            margin-top: 20px;
+            border-top: 2px solid #8B4513;
+            padding-top: 10px;
+        }
+
+        .tab {
+            flex: 1;
+            text-align: center;
+            color: #8B4513;
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+        }
+
+        .tab:hover {
+            color: red;
+        }
+
+        .tab.active {
+            border-bottom: 2px solid #8B4513;
+            font-weight: bold;
+        }
+
+        .tab-content {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .photo-grid {
+            display: none;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .photo-grid img {
+            width: 100%;
+            height: auto;
+            border: 2px solid #8B4513;
+            border-radius: 5px;
+        }
+
+        .photo-grid.active {
+            display: grid;
+        }
+    </style>
+    </head>
+    <body>
+        <header>
+            <div class="Navbar_01">
+        
+              <div class = "left">
+              <img src="Image/List_Icon.png" alt="總攬">
+              <div class="Dropdown_List">
+                
+                <div class="Block">
+                  <a href="HomePage.html">首頁</a>
+                </div>
+                <div class="Block">
+                  <a href="AboutPage.html">關於我們</a>
+                </div>
+                <div class="Block">
+                  <a href="OrderPage.html">訂購配送</a>
+                </div>
+                <div class="Block">
+                  <a href="BakingPage.html">烘焙方法</a>
+                </div>
+              </div>
+              </div>
+        
+              <div class = "right">
+                <div class="Search-Box">
+                  <input type="text" id="searchInput" placeholder="" oninput="SearchList()">
+                  <img src="Image/Magnifier_Icon.png" alt="搜尋圖示" class="left"> 
+                  <img src="Image/Mic_Icon.png" alt="麥克風圖示" class="right">
+                </div>
+        
+                <img src="Image/FavoritesList_Icon.png" alt="收藏清單" onclick="FavoriteList()" class="icon">
+        
+        
+        
+                <div class="cart">
+        
+                  <img src="Image/Cart_Icon.png" alt="購物車清單" class="icon cart">
+        
+                  <div class="Dropdown_Cart">
+        
+                  </div>
+        
+                </div>
+        
+        
+        
+                <img src="Image/User_Icon.png" alt="會員資料" class="icon">
+              </div>
+        
+            </div>
+          </header>
+          <div class="Navbar_02">  
+
+            <div class="Block" >
+              <a href="AboutPage.html">關於我們</a>
+            </div>
+            
+            <div class="Block">
+              <a href="OrderPage.html">訂購配送</a>
+            </div>
+        
+            <div class="Block">
+              <a href="BakingPage.html">烘焙方法</a>
+            </div>
+        
+            <div class="Block">
+              <a href="HomePage.html">首頁</a>
+            </div>
+        
+          </div>
+<div class="content">
+
+    <div class="product-image">
+        <img src="Image/CoffeeBeans.jpg" width="700" height="700" alt="咖啡豆">
+    </div>
+    
+    <div class="product-info">
+        <h1>要匯入的產品名</h1>
+        <div class="price">
+            要匯入的價格
+             <span>適用NT$99免運</span>
+        </div>
+    
+   
+     
+    <div class="quantity">
+                <button onclick="updateQuantity(-1)">-</button>
+                <input type="text" id="quantity" value="1" readonly>
+                <button onclick="updateQuantity(1)">+</button>
+                </div>
+        
+
+    <div class="buttons">
+        <button>加入購物車</button>
+        <button>加入收藏</button>
+        <button >立即結帳</button>
+        </div>
+        
+    <div class="additional-info">
+        <p class="toggle-header" onclick="toggleText('shipping-text', this)">付款與運送 v</p>
+        <div class="hidden-text" id="shipping-text">
+        運送方式可選擇宅配或超商取貨，付款方式包含信用卡、行動支付及貨到付款。
+        </div>
+
+    
+        </div>
+        </div>
+</div>
+    
+        <div class="tab-container">
+             <div class="tab" onclick="toggleTab('specifications')">商品描述</div>
+             <div class="tab" onclick="toggleTab('recommendations')">其他商品</div>
+        </div>
+
+        <div class="tab-content" id="specifications">
+            <p>要匯入的描述</p>
+        </div>
+    
+        <div class="tab-content" id="recommendations">
+            <div class="Content">
+            <div class="Product-List" id="product-list"></div>
+            </div>
+        </div>
+        <div class="Notification"></div>
+    <script>
+          document.getElementById('likeButton').addEventListener('click', function () {
+          const button = this;
+          button.textContent = button.textContent === '🤍' ? '❤️' : '🤍';
+       }); 
+        
+        function toggleText(id, header) {
+            const text = document.getElementById(id);
+            if (text.style.display === 'none' || text.style.display === '') {
+                text.style.display = 'block';
+                header.textContent = header.textContent.replace('v', '^');
+                header.classList.add('open');
+            } else {
+                text.style.display = 'none';
+                header.textContent = header.textContent.replace('^', 'v');
+                header.classList.remove('open');
+            }
+        }
+
+        function updateQuantity(change) {
+            const quantityInput = document.getElementById('quantity');
+            let currentValue = parseInt(quantityInput.value);
+            currentValue += change;
+            if (currentValue < 1) {
+                currentValue = 1;
+            }
+            quantityInput.value = currentValue;
+        }
+
+        function toggleTab(tabId) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            contents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+
+            if (tabId === 'recommendations') {
+                document.getElementById('photo-grid').classList.toggle('active');
+            }
+        }
+        
+    </script>
+
+  <div class="Notification"></div>
+
+<script src="JavaScript/ProductScript.js"></script>
+
+</body>
+</html>

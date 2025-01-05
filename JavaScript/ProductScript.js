@@ -224,7 +224,9 @@ function displayProducts(products) {
 
 
     productDiv.innerHTML = `
-      <img src="${product.image}">
+      <a href="ProductPage.html?name=${encodeURIComponent(product.name)}">
+        <img src="${product.image}" alt="${product.name}">
+      </a>
       <h3>${product.name}</h3>
       <div class="Under">
         <p>NT$${product.price}</p>
@@ -430,5 +432,54 @@ function addToCart(productName) {
   }
   else {
     ShowNotification('商品不存在');
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 獲取當前頁面的檔案名稱
+const currentPage = window.location.pathname.split("/").pop();
+
+if (currentPage === "ProductPage.html") {
+  const urlParams = new URLSearchParams(window.location.search);
+  const productName = urlParams.get("name");
+
+  // 查找對應的商品
+  const product = products.find((p) => p.name === productName);
+
+  if (product) {
+    // 更新產品圖片
+    const productImage = document.querySelector(".product-image img");
+    productImage.src = product.image;
+    productImage.alt = product.name;
+
+    // 更新產品名稱
+    document.querySelector(".product-info h1").textContent = product.name;
+
+    // 更新價格
+    document.querySelector(".price").textContent = `NT$${product.price}`;
+
+    // 更新描述
+    document.getElementById("specifications").innerHTML = `<p>${product.description}</p>`;
+
+    // 在 "其他商品" 中顯示推薦商品
+    const recommendations = products.filter((p) => p.name !== productName);
+    displayProducts(recommendations);
+  } else {
+    document.querySelector(".content").innerHTML = "<p>找不到相關產品資料。</p>";
   }
 }

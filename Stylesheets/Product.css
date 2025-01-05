@@ -33,7 +33,7 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3 );
   color:rgb(187, 135, 2);
 }
-.product > img {
+.product > a > img {
   width: 100%;
 }
 .product > h3 {

@@ -1,0 +1,88 @@
+.Footer {
+            max-width: 100%;
+            margin-top: 50px ;
+            padding: 20px;
+            background-color:black;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+.Footer > .header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.Footer > .header h1 {
+    font-size: 10px;
+    color: #704214;
+    text-align: right;
+    margin: 0;
+}
+
+.Footer > .main-title {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    color: #704214;
+    margin-bottom: 20px;
+}
+
+.Footer > .content {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content:space-between;
+    color: #ffffff;
+}
+
+.Footer > .icon {
+    width: 120px;
+    height: 120px;
+    border: 2px solid floralwhite;
+    border-radius: 10px;
+    margin-right: auto;
+    resize: both;
+    overflow: auto;
+}
+
+.Footer > .content > .contact-details {
+    flex: 1;
+    margin-left: 20px;
+    text-align: left;
+}
+
+.Footer > .content > .contact-details p {
+    margin: 8px 0;
+    font-size: 18px;
+}
+
+.Footer > .content > .contact-details a {
+    color:floralwhite;
+    text-decoration: none;
+}
+
+.Footer > .social-icons {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    column-gap: 15px;
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+.Footer > .social-icons img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.Footer > .photo {
+    position: relative;
+    left: 0;            
+    top: 15px;          
+    margin-left: 0;     
+}
