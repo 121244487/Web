@@ -1,0 +1,57 @@
+.adadad {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 50%;
+    height: 100%;
+    border: 3px;
+    gap: 0px;
+  }
+
+  .adadad img{
+    margin-top: 100px; width: 85%;
+  }
+
+  .區塊{
+    width: 80%;
+    border: 0px;
+    height: auto;
+    justify-content: center;
+    margin-top: 50px;
+    animation: SlideIn 1s ease-in-out forwards ;
+  }
+  .區塊:hover{
+
+  }
+
+  .區塊 > .標題{
+    width: auto;
+    height: 100px;
+    background-color: #8b4513;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .區塊 > .標題 p{color: #eec49a; font-size: 32px; font-weight: 800;
+    padding: 10px;
+  }
+
+  .區塊 > .內容{
+    width: auto;
+  }
+
+  .區塊 > .內容 p{color: rgb(187, 135, 2); font-size: 20px; font-weight: 600;
+    padding: 20px;
+  }
+
+  .線框{
+    width: 100%;
+    height: 5px;
+    background-color: #8b4513;
+  }
+.h1{
+  margin-top: 50px;
+}
