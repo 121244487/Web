@@ -81,6 +81,17 @@
   animation: SlideIn 1s ease-in-out forwards;
   padding: 0 5%;
 }
+@media (min-width: 1920px) {
+  .Navbar_02 > .Block{
+    padding: 0 5%;
+  }
+}
+
+@media (max-width: 800px) {
+  .Navbar_02{
+    display: none;
+  }
+}
 .Navbar_02 > .Block a {
   text-align: center;
   display: inline-block;
@@ -135,6 +146,7 @@
 }
 .Dropdown_List a:hover {
   color: #FFD700;
+  animation: Pulse  0.5s ease-in-out infinite;
 }
 .left:hover .Dropdown_List {
   visibility: visible;

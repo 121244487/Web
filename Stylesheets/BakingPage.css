@@ -22,9 +22,17 @@
     margin-top: 50px;
     animation: SlideIn 1s ease-in-out forwards ;
   }
-  .區塊:hover{
+  @media (min-width: 1920px) {
+    .adadad{
+      width: 50%;
+    }
+}
 
+@media (max-width: 1000px) {
+  .adadad{
+    width: 90%;
   }
+}
 
   .區塊 > .標題{
     width: auto;

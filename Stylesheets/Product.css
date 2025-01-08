@@ -91,6 +91,9 @@ img.favorite {
     .Content{
       width: 80%;
     }
+    .Block p{
+      font-size: 2px;
+    }
   } 
   @media (max-width: 699px) {
     .Product-List {
